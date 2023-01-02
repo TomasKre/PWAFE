@@ -9,7 +9,7 @@ import { ROOMS } from 'model/mock-rooms'
 })
 export class SidebarComponent {
 
-  rooms = ROOMS;
+  rooms: Room[] = ROOMS;
   @Output() selectedRoomId = new EventEmitter<string>();
 
   constructor() { }

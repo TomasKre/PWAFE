@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Message } from 'model/message';
+import { CHAT } from 'model/mock-chat';
 
 @Component({
   selector: 'app-chat',
@@ -8,7 +10,8 @@ import { Component, Input } from '@angular/core';
 export class ChatComponent {
 
   @Input() selectedGroupId? = '';
-  @Input() loggedUserId? = '';
+  @Input() loggedUserId? = '0';
+  chat: Message[] = CHAT;
 
   constructor() { }
 

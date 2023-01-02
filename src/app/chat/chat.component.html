@@ -1,1 +1,7 @@
-<p>chat works! {{ selectedGroupId }}</p>
+<ul class="messages">
+    <li *ngFor="let message of chat">
+        <div [ngClass]="loggedUserId == message.fromId ? 'my' : 'other'">
+            <div class="bubble">{{message.text}}</div>
+        </div>
+    </li>
+</ul>

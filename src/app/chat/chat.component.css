@@ -1,0 +1,30 @@
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: block;
+    min-width: 100%;
+    list-style-type: none;
+    padding-top: 15px;
+    margin: 0;
+}
+
+.my {
+    text-align: left;
+    padding-left: 1vw;
+}
+
+.other {
+    text-align: right;
+    padding-right: 1vw;
+}
+
+.bubble {
+    font-weight: 500;
+    display: inline-block;
+    padding: 3px 8px 5px 8px;
+    border-radius: 10px;
+    background-color: lightblue;
+}
