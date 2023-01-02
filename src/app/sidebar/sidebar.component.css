@@ -1,0 +1,30 @@
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    padding: 5px;
+    margin: 0;
+    border: 1px solid #40c236;
+}
+
+li:hover {
+    background-color: #40c236;
+    cursor: pointer;
+}
+
+.name {
+    font-size: small;
+    font-weight: bold;
+}
+
+.users {
+    width: 100%;
+    font-size: smaller;
+    color: gray;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+}

@@ -1,0 +1,8 @@
+<ul class="rooms">
+<li *ngFor="let room of rooms">
+    <div type="button" (click)="onSelect(room.groupId)">
+        <div class="name">{{room.name}}</div>
+        <div class="users">{{room.usernames}}</div>
+    </div>
+</li>
+</ul>

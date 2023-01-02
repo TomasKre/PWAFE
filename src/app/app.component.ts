@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Chat-app';
+  selectedRoomId?: string;
+
+  selectGroup(groupId: string) {
+    this.selectedRoomId = groupId;
+  }
 }
