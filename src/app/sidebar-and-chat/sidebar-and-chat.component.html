@@ -1,0 +1,9 @@
+<!-- Sidebar -->
+<div class="sidebar">
+    <app-sidebar (selectedRoomId)="selectGroup($event)"></app-sidebar>
+</div>
+
+<!-- Chat window -->
+<div class="chat">
+    <app-chat [selectedGroupId]="selectedRoomId"></app-chat>
+</div>

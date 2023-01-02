@@ -1,0 +1,13 @@
+.sidebar {
+    float: left;
+    height: 95vh;
+    width: 15vw;
+    background-color: #6df540;
+}
+
+.chat {
+    float: left;
+    width: 85vw;
+    height: 95vh;
+    background-color: #c7f7c8;
+}

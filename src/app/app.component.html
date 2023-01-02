@@ -4,17 +4,10 @@
   <div class="toolbar" role="banner">
     <span>Chat app PWA {{ selectedRoomId }}</span>
     <div class="spacer"></div>
-    <button>Sign up</button>
-    <button>Log in</button>
+    <nav>
+      <a routerLink="/login">Login</a>
+      <a routerLink="/signup">Sign up</a>
+    </nav>
   </div>
-
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <app-sidebar (selectedRoomId)="selectGroup($event)"></app-sidebar>
-  </div>
-
-  <!-- Chat window -->
-  <div class="chat">
-    <app-chat [selectedGroupId]="selectedRoomId"></app-chat>
-  </div>
+  <router-outlet></router-outlet>
 </div>
