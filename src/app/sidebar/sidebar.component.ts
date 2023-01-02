@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { GroupService } from '../group.service';
 import { Room } from 'model/room'
 import { ROOMS } from 'model/mock-rooms'
 
@@ -9,13 +10,17 @@ import { ROOMS } from 'model/mock-rooms'
 })
 export class SidebarComponent {
 
-  rooms: Room[] = ROOMS;
+  rooms: Room[] = [];
   @Output() selectedRoomId = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private groupService: GroupService) { }
 
   ngOnInit(): void {
+    this.getGroups();
+  }
 
+  getGroups(): void {
+    this.groupService.getRooms().subscribe(rooms => this.rooms = rooms);
   }
 
   onSelect(groupId: string) {
