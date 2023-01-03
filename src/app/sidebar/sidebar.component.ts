@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { GroupService } from '../group.service';
 import { Room } from 'model/room'
 import { ROOMS } from 'model/mock-rooms'
+import { CookiesService } from '../cookies.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,9 +12,10 @@ import { ROOMS } from 'model/mock-rooms'
 export class SidebarComponent {
 
   rooms: Room[] = [];
+  @Input() 
   @Output() selectedRoomId = new EventEmitter<string>();
 
-  constructor(private groupService: GroupService) { }
+  constructor(private groupService: GroupService, private cookies: CookiesService) { }
 
   ngOnInit(): void {
     this.getGroups();

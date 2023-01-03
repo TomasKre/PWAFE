@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Message } from 'model/message';
 import { CHAT } from 'model/mock-chat';
+import { CookiesService } from '../cookies.service';
 
 @Component({
   selector: 'app-chat',
@@ -10,10 +11,12 @@ import { CHAT } from 'model/mock-chat';
 export class ChatComponent {
 
   @Input() selectedGroupId? = '';
-  @Input() loggedUserId? = '0';
+  loggedUserId: string;
   chat: Message[] = CHAT;
 
-  constructor() { }
+  constructor(private cookies: CookiesService) {
+    this.loggedUserId = this.cookies.getCookie('userId');
+  }
 
   ngOnInit(): void {
 
