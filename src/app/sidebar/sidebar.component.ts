@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { GroupService } from '../group.service';
 import { Room } from 'model/room'
-import { ROOMS } from 'model/mock-rooms'
 import { CookiesService } from '../cookies.service';
 
 @Component({
@@ -12,7 +11,6 @@ import { CookiesService } from '../cookies.service';
 export class SidebarComponent {
 
   rooms: Room[] = [];
-  @Input() 
   @Output() selectedRoomId = new EventEmitter<string>();
 
   constructor(private groupService: GroupService, private cookies: CookiesService) { }

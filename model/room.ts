@@ -1,5 +1,5 @@
 export interface Room { 
-    groupId: string;
+    _id: string;
     name: string;
     usernames: string[];
 }

@@ -9,11 +9,11 @@ import { CookiesService } from './cookies.service';
 export class AppComponent {
   title = 'Chat-app';
   selectedRoomId?: string;
-  loggedUserId?: string;
+  loggedUsername?: string;
 
   constructor (private cookies: CookiesService) {
-    this.cookies.setCookie('userId', '639f92127a41c06074b35dea', 1);
-    this.loggedUserId = this.cookies.getCookie('userId');
+    this.cookies.setCookie('username', 'makak12', 1);
+    this.loggedUsername = this.cookies.getCookie('username');
   }
 
   selectGroup(groupId: string) {

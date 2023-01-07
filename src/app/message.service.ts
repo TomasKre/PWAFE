@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Room } from 'model/room'
 import { CookiesService } from './cookies.service';
+import { Message } from 'model/message';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GroupService {
+export class MessageService {
 
-  private groupUrl = 'https://peaceful-forest-45251.herokuapp.com/group/';
+  private messageUrl = 'https://peaceful-forest-45251.herokuapp.com/message/';
 
   constructor(private http: HttpClient, private cookies: CookiesService) { }
 
-  getRooms(): Observable<Room[]> {
-    return this.http.get<Room[]>(this.groupUrl + this.cookies.getCookie('username'),
+  getMessages(groupId: string): Observable<Message[]> {
+    return this.http.get<Message[]>(this.messageUrl + groupId,
     {
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ export class GroupService {
       }
     })
     .pipe(
-      catchError(this.handleError<Room[]>('getRooms', []))
+      catchError(this.handleError<Message[]>('getMessages', []))
     );
   }
 
