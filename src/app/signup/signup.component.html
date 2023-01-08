@@ -1,1 +1,16 @@
-<p>signup works!</p>
+<form [formGroup]="signup">
+    <label for="username">Username:</label><br>
+    <input type="text" [formControl]="username" name="username" placeholder="karel4" 
+    required autofocus (blur)="validationUsername()"> {{ validationResultUsername }}<br>
+    <label for="password">Password:</label><br>
+    <input type="text" [formControl]="password" name="password" required autocomplete="off"
+     (blur)="validationPassword()"> {{ validationResultPassword }}<br>
+    <label for="email">Email:</label><br>
+    <input type="email" [formControl]="email" name="email" placeholder="karel4@svatariserimska.cz"
+     (blur)="validationEmail()" required> {{ validationResultEmail }}<br>
+    <label for="firstName">First name:</label><br>
+    <input type="text" [formControl]="firstName" name="firstName" placeholder="Karel" required><br>
+    <label for="lastName">Last name:</label><br>
+    <input type="text" [formControl]="lastName" name="lastName" placeholder="Čtvrtý" required><br><br>
+    <input type="button" [disabled]="!signup.valid" (click)="submit()" value="Submit"><input type="reset" value="Reset"><br>
+</form>
