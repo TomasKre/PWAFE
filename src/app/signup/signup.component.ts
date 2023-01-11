@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../user.service';
+import { User } from 'model/user';
 
 @Component({
   selector: 'app-signup',
@@ -23,11 +25,19 @@ export class SignupComponent {
   validationResultPassword?: string;
   validationResultEmail?: string;
 
+  constructor(private userService: UserService) {
+  }
+
   ngOnInit() {
   }
 
   submit() {
     console.log(this.signup);
+    if(this.signup.value != null)
+      if(this.signup.value.username != null && this.signup.value.password != null && 
+        this.signup.value.email != null && this.signup.value.firstName != null && this.signup.value.lastName != null)
+      this.userService.signupUser(new User(this.signup.value.username, this.signup.value.password,
+        this.signup.value.email, this.signup.value.firstName, this.signup.value.lastName));
   }
 
   validationUsername() {

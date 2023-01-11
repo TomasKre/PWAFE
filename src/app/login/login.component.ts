@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CookiesService } from '../cookies.service';
+import { UserService } from '../user.service';
+import { UserShort } from 'model/userShort';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +19,17 @@ export class LoginComponent {
   validationResultUsername?: string;
   validationResultPassword?: string;
 
+  constructor(private userService: UserService, private cookies: CookiesService) {
+  }
+
   ngOnInit() {
   }
 
   submit() {
     console.log(this.login);
+    if(this.login.value != null) {
+      if(this.login.value.username != null && this.login.value.password)
+      this.userService.loginUser(new UserShort(this.login.value.username, this.login.value.password));
+    }
   }
 }
