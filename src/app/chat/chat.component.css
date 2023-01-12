@@ -1,6 +1,7 @@
 ul {
     margin: 0;
     padding: 0;
+    height: 90vh;
 }
 
 li {
@@ -27,4 +28,10 @@ li {
     padding: 3px 8px 5px 8px;
     border-radius: 10px;
     background-color: lightblue;
+}
+
+.input {
+    height: 5vh;
+    display: flex;
+    justify-content: right;
 }

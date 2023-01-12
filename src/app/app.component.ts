@@ -12,7 +12,6 @@ export class AppComponent {
   loggedUsername?: string;
 
   constructor (private cookies: CookiesService) {
-    this.cookies.setCookie('username', 'makak12', 1);
     this.loggedUsername = this.cookies.getCookie('username');
   }
 

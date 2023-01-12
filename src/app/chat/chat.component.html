@@ -5,3 +5,7 @@
         </div>
     </li>
 </ul>
+<div class="input">
+    <input [formControl]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" />
+    <button (click)="sendMessage()">Send Message</button>
+</div>

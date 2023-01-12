@@ -24,6 +24,9 @@ export class SignupComponent {
   validationResultUsername?: string;
   validationResultPassword?: string;
   validationResultEmail?: string;
+  signupFailed = false;
+  signupSuccess = false;
+  errorMsg = '';
 
   constructor(private userService: UserService) {
   }
@@ -37,7 +40,18 @@ export class SignupComponent {
       if(this.signup.value.username != null && this.signup.value.password != null && 
         this.signup.value.email != null && this.signup.value.firstName != null && this.signup.value.lastName != null)
       this.userService.signupUser(new User(this.signup.value.username, this.signup.value.password,
-        this.signup.value.email, this.signup.value.firstName, this.signup.value.lastName));
+        this.signup.value.email, this.signup.value.firstName, this.signup.value.lastName))
+        .subscribe({
+          next: data => {
+            console.log(data);
+            this.signupSuccess = false;
+            this.signupFailed = false;
+          },
+          error: err => {
+            this.errorMsg = err.error.message;
+            this.signupFailed = true;
+          }
+        });
   }
 
   validationUsername() {
