@@ -9,9 +9,6 @@
       <button routerLink="/signup">Sign up</button>
     </div>
     <div *ngIf="loggedIn == true">
-      <input [formControl]="newGroup" (keyup)="$event.keyCode == 13 && addToGroup()"
-       placeholder="username"/>
-      <button (click)="addToGroup()">Add to group</button>
       <button (click)="logout()">Logout</button>
     </div>
   </div>

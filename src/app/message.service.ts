@@ -25,9 +25,6 @@ export class MessageService {
       'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
       'Session': token
     })};
-   }
-
-  ngOnInit(){
     this.http.get<string>('https:peaceful-forest-45251.herokuapp.com', this.httpOptions)
     .pipe(
       catchError(this.handleError<string>('getPort'))
@@ -35,7 +32,7 @@ export class MessageService {
       this.socket = io('https://peaceful-forest-45251.herokuapp.com:' + result);
       console.log(result);
     });
-  }
+   }
 
   getMessages(groupId: string): Observable<Message[]> {
     return this.http.get<Message[]>(this.messageUrl + groupId, this.httpOptions)
@@ -54,6 +51,7 @@ export class MessageService {
   }
 
   public sendMessage(message: string) {
+    console.log("Socket emit msg");
     this.socket.emit('message', message);
   }
 

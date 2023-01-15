@@ -5,5 +5,7 @@
 
 <!-- Chat window -->
 <div class="chat">
-    <app-chat [selectedGroupId]="selectedRoomId"></app-chat>
+    <div *ngIf="selectedRoomId != null">
+        <app-chat [selectedGroupId]="selectedRoomId"></app-chat>
+    </div>
 </div>

@@ -11,7 +11,7 @@ import { MessageService } from '../message.service';
 export class SidebarAndChatComponent {
   
   @Output() selectedGroupId? = new EventEmitter<string>();
-  @Input()  selectedRoomId?: string; 
+  @Input() selectedRoomId?: string;
 
   constructor (private messageService: MessageService, private cookies: CookiesService,
     private router: Router) {

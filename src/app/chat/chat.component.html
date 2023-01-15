@@ -1,3 +1,8 @@
+<div class="user">
+    <input [formControl]="newUser" (keyup)="$event.keyCode == 13 && addToGroup()"
+    placeholder="username"/>
+    <button (click)="addToGroup()">Add user</button>
+</div>
 <ul class="messages">
     <li *ngFor="let message of chat">
         <div [ngClass]="loggedUsername == message.fromId ? 'my' : 'other'">
@@ -5,7 +10,7 @@
         </div>
     </li>
 </ul>
-<div class="input">
+<div class="message">
     <input [formControl]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" />
     <button (click)="sendMessage()">Send Message</button>
 </div>

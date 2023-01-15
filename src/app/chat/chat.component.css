@@ -1,7 +1,7 @@
 ul {
     margin: 0;
     padding: 0;
-    height: 90vh;
+    height: 85vh;
 }
 
 li {
@@ -30,8 +30,14 @@ li {
     background-color: lightblue;
 }
 
-.input {
+.message {
     height: 5vh;
     display: flex;
     justify-content: right;
+}
+
+.user {
+    height: 5vh;
+    display: flex;
+    justify-content: center;
 }
