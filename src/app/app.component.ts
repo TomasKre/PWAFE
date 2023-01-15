@@ -37,6 +37,7 @@ export class AppComponent {
   }
 
   logout() {
-
+    this.cookies.deleteCookie('session');
+    window.location.reload();
   }
 }

@@ -2,17 +2,17 @@
 <div class="content">
   <!-- Toolbar -->
   <div class="toolbar" role="banner">
-    <a routerLink="/"><span>Chat app PWA {{ selectedRoomId }}</span></a>
+    <a routerLink="/"><span>Chat app PWA</span></a>
     <div class="spacer"></div>
     <div *ngIf="loggedIn == false">
-      <a routerLink="/login">Login</a>
-      <a routerLink="/signup">Sign up</a>
+      <button routerLink="/login">Login</button>
+      <button routerLink="/signup">Sign up</button>
     </div>
     <div *ngIf="loggedIn == true">
       <input [formControl]="newGroup" (keyup)="$event.keyCode == 13 && addToGroup()"
        placeholder="username"/>
       <button (click)="addToGroup()">Add to group</button>
-      <button (click)="logout">Logout</button>
+      <button (click)="logout()">Logout</button>
     </div>
   </div>
   <router-outlet></router-outlet>
