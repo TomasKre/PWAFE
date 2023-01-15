@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent},
   { path: 'chat', component: SidebarAndChatComponent},
-  { path: '', component: SidebarAndChatComponent},
+  { path: '', component: LoginComponent},
   /*{ path: '', redirectTo: '/nekam', pathMatch: 'full' },*/
   { path: '**', component: PageNotFoundComponent}
 ];

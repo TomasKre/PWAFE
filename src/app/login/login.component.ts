@@ -25,13 +25,16 @@ export class LoginComponent {
   errorMsg = '';
 
   constructor(private userService: UserService, private cookies: CookiesService, private router: Router) {
+    var token = this.cookies.getCookie('session');
+    if (token != null && token != '') {
+      this.router.navigate(['/chat']);
+    }
   }
 
   ngOnInit() {
   }
 
   submit() {
-    console.log(this.login);
     if(this.login.value != null) {
       if(this.login.value.username != null && this.login.value.password)
       this.userService.loginUser(new UserShort(this.login.value.username, this.login.value.password))

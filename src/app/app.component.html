@@ -4,10 +4,16 @@
   <div class="toolbar" role="banner">
     <a routerLink="/"><span>Chat app PWA {{ selectedRoomId }}</span></a>
     <div class="spacer"></div>
-    <nav>
+    <div *ngIf="loggedIn == false">
       <a routerLink="/login">Login</a>
       <a routerLink="/signup">Sign up</a>
-    </nav>
+    </div>
+    <div *ngIf="loggedIn == true">
+      <input [formControl]="newGroup" (keyup)="$event.keyCode == 13 && addToGroup()"
+       placeholder="username"/>
+      <button (click)="addToGroup()">Add to group</button>
+      <button (click)="logout">Logout</button>
+    </div>
   </div>
   <router-outlet></router-outlet>
 </div>
