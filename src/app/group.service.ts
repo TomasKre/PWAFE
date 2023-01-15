@@ -11,7 +11,7 @@ import { CreateGroup } from 'model/createGroup';
   providedIn: 'root'
 })
 export class GroupService {
-  private groupUrl = 'https://peaceful-forest-45251.herokuapp.com/group/';
+  private groupUrl = 'https://peaceful-forest-45251.herokuapp.com/group';
   private httpOptions;
 
 
@@ -26,19 +26,19 @@ export class GroupService {
     })};
   }
 
-  getRooms(): Observable<Room[]> {
-    return this.http.get<Room[]>(this.groupUrl + this.cookies.getCookie('username'), this.httpOptions)
+  getRooms(username: string): Observable<Room[]> {
+    return this.http.get<Room[]>(this.groupUrl + "/" + username, this.httpOptions)
     .pipe(
       catchError(this.handleError<Room[]>('getRooms', []))
     );
   }
 
   addToRoom(addUser: AddUser) {
-    return this.http.post(this.groupUrl + "addUser", addUser, this.httpOptions);
+    return this.http.post(this.groupUrl + "/addUser", addUser, this.httpOptions);
   }
 
-  createRoom(crategroup: CreateGroup) {
-    return this.http.post(this.groupUrl, crategroup, this.httpOptions);
+  createRoom(creategroup: CreateGroup) {
+    return this.http.post(this.groupUrl, creategroup, this.httpOptions);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

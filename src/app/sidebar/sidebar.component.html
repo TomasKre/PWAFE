@@ -1,8 +1,14 @@
 <ul class="rooms">
-<li *ngFor="let room of rooms">
+<li *ngFor="let room of rooms" class="groups">
     <div type="button" (click)="onSelect(room._id)">
         <div class="name">{{room.name}}</div>
         <div class="users">{{room.usernames}}</div>
+    </div>
+</li>
+<li class="create">
+    <div class="name">Create Group</div>
+    <div class="input"><input [formControl]="newGroup" (keyup)="$event.keyCode == 13 && createGroup()"
+        placeholder="group name"/>
     </div>
 </li>
 </ul>

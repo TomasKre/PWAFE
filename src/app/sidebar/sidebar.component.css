@@ -10,7 +10,7 @@ li {
     border: 1px solid #40c236;
 }
 
-li:hover {
+.groups:hover {
     background-color: #40c236;
     cursor: pointer;
 }
@@ -27,4 +27,8 @@ li:hover {
     text-overflow: ellipsis;
     overflow: hidden; 
     white-space: nowrap;
+}
+
+.input input {
+    max-width: 90%;
 }
