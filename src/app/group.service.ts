@@ -9,21 +9,23 @@ import { CookiesService } from './cookies.service';
   providedIn: 'root'
 })
 export class GroupService {
-
   private groupUrl = 'https://peaceful-forest-45251.herokuapp.com/group/';
+  private httpOptions;
 
-  constructor(private http: HttpClient, private cookies: CookiesService) { }
+
+  constructor(private http: HttpClient, private cookies: CookiesService) {
+    var token = cookies.getCookie('session');
+    this.httpOptions = { headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE, PATCH',
+      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+      'Session': token
+    })};
+   }
 
   getRooms(): Observable<Room[]> {
-    return this.http.get<Room[]>(this.groupUrl + this.cookies.getCookie('username'),
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE, PATCH',
-        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
-      }
-    })
+    return this.http.get<Room[]>(this.groupUrl + this.cookies.getCookie('username'), this.httpOptions)
     .pipe(
       catchError(this.handleError<Room[]>('getRooms', []))
     );
