@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CookiesService } from '../cookies.service';
 import { UserService } from '../user.service';
 import { UserShort } from 'model/userShort';
+import { LoginResponse } from 'model/loginResponse';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,7 @@ export class LoginComponent {
   loginSuccess = false;
   errorMsg = '';
 
-  constructor(private userService: UserService, private cookies: CookiesService) {
+  constructor(private userService: UserService, private cookies: CookiesService, private router: Router) {
   }
 
   ngOnInit() {
@@ -35,13 +37,15 @@ export class LoginComponent {
       this.userService.loginUser(new UserShort(this.login.value.username, this.login.value.password))
       .subscribe({
         next: data => {
-          this.cookies.setCookie("session", JSON.stringify(data), 1);
+          var loginResponse = data as LoginResponse;
+          this.cookies.setCookie("session", loginResponse.token, 1);
   
           this.loginFailed = false;
           this.loginSuccess = true;
-          window.location.reload();
+          this.router.navigate(['/chat']);
         },
         error: err => {
+          console.log(err);
           this.errorMsg = err.error.message;
           this.loginFailed = true;
         }

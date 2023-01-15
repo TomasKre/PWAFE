@@ -2,6 +2,6 @@
     <label for="username">Username:</label><br>
     <input type="text" [formControl]="username" name="username"><br>
     <label for="password">Password:</label><br>
-    <input type="text" [formControl]="password" name="password" autocomplete="off"><br><br>
+    <input type="password" [formControl]="password" name="password" autocomplete="off"><br><br>
     <input type="button" [disabled]="!login.valid" (click)="submit()" value="Submit"><input type="reset" value="Reset"><br>
 </form>

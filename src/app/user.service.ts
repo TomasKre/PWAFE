@@ -23,11 +23,11 @@ export class UserService {
   constructor(private http: HttpClient, private cookies: CookiesService) { }
 
   signupUser(signup: User) {
-    return this.http.post(this.userUrl + "signup", signup, this.httpOptions );
+    return this.http.post(this.userUrl + "signup", signup, this.httpOptions);
   }
 
   loginUser(login: UserShort) {
-    return this.http.post(this.userUrl + "login", login, this.httpOptions );
+    return this.http.post(this.userUrl + "login", login, this.httpOptions);
   }
 
   logout(): Observable<any> {

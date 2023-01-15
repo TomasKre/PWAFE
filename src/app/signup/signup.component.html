@@ -3,7 +3,7 @@
     <input type="text" [formControl]="username" name="username" placeholder="karel4" 
     required autofocus (blur)="validationUsername()"> {{ validationResultUsername }}<br>
     <label for="password">Password:</label><br>
-    <input type="text" [formControl]="password" name="password" required autocomplete="off"
+    <input type="password" [formControl]="password" name="password" required autocomplete="off"
      (blur)="validationPassword()"> {{ validationResultPassword }}<br>
     <label for="email">Email:</label><br>
     <input type="email" [formControl]="email" name="email" placeholder="karel4@svatariserimska.cz"

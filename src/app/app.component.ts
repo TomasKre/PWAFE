@@ -12,7 +12,7 @@ export class AppComponent {
   loggedUsername?: string;
 
   constructor (private cookies: CookiesService) {
-    this.loggedUsername = this.cookies.getCookie('username');
+    this.loggedUsername = this.cookies.getCookie('session');
   }
 
   selectGroup(groupId: string) {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from 'model/user';
 
@@ -28,7 +29,7 @@ export class SignupComponent {
   signupSuccess = false;
   errorMsg = '';
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
@@ -46,6 +47,7 @@ export class SignupComponent {
             console.log(data);
             this.signupSuccess = false;
             this.signupFailed = false;
+            this.router.navigate(['/login']); // test
           },
           error: err => {
             this.errorMsg = err.error.message;
