@@ -45,7 +45,7 @@ export class LoginComponent {
   
           this.loginFailed = false;
           this.loginSuccess = true;
-          this.router.navigate(['/chat']);
+          window.location.href="/chat"
         },
         error: err => {
           console.log(err);
