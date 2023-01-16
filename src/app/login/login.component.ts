@@ -45,7 +45,8 @@ export class LoginComponent {
   
           this.loginFailed = false;
           this.loginSuccess = true;
-          window.location.href="/chat"
+          //window.location.href="/chat" //localhost
+          window.location.href="/PWAFE/chat" //github
         },
         error: err => {
           console.log(err);
