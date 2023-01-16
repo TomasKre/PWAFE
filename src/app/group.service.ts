@@ -11,8 +11,8 @@ import { CreateGroup } from 'model/createGroup';
   providedIn: 'root'
 })
 export class GroupService {
-  //private groupUrl = 'https://peaceful-forest-45251.herokuapp.com/group';
-  private groupUrl = 'http://localhost:5000/group';
+  private groupUrl = 'https://peaceful-forest-45251.herokuapp.com/group';
+  //private groupUrl = 'http://localhost:5000/group';
   private httpOptions;
 
 

@@ -11,8 +11,8 @@ import { ApiResponse } from 'model/apiResponse';
   providedIn: 'root'
 })
 export class UserService {
-  //private userUrl = 'https://peaceful-forest-45251.herokuapp.com/user/';
-  private userUrl = 'http://localhost:5000/user/';
+  private userUrl = 'https://peaceful-forest-45251.herokuapp.com/user/';
+  //private userUrl = 'http://localhost:5000/user/';
   private httpOptions = { headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',

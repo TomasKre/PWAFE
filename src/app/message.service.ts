@@ -12,9 +12,9 @@ import { io } from "socket.io-client";
 export class MessageService {
 
   public message$: BehaviorSubject<Message> = new BehaviorSubject<Message>(<Message>({}));
-  //private serverUrl = 'https://peaceful-forest-45251.herokuapp.com';
-  //private messageUrl = this.serverUrl + '/message/';
-  private messageUrl = 'http://localhost:5000/message/';
+  private serverUrl = 'https://peaceful-forest-45251.herokuapp.com';
+  private messageUrl = this.serverUrl + '/message/';
+  //private messageUrl = 'http://localhost:5000/message/';
 
   public socket: any; // port bude získáván z dotazu na cestu "/"
   private httpOptions;
@@ -31,10 +31,11 @@ export class MessageService {
     /*this.http.get<string>('https:peaceful-forest-45251.herokuapp.com', this.httpOptions)
     .pipe(
       catchError(this.handleError<string>('getPort'))
-    ).subscribe(result => {
-      this.socket = io(this.serverUrl + ':' + result);
+    ).subscribe(result => {*/
+      this.socket = io(this.serverUrl/* + ':' + result*/);
+    /*  console.log(this.socket);
     });*/
-    this.socket = io('http://localhost:5000');
+    //this.socket = io('http://localhost:5000');
    }
 
   getMessages(groupId: string): Observable<Message[]> {
