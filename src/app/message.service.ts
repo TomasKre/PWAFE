@@ -12,7 +12,9 @@ import { io } from "socket.io-client";
 export class MessageService {
 
   public message$: BehaviorSubject<Message> = new BehaviorSubject<Message>(<Message>({}));
-  private messageUrl = 'https://peaceful-forest-45251.herokuapp.com/message/';
+  //private messageUrl = 'https://peaceful-forest-45251.herokuapp.com/message/';
+  private messageUrl = 'http://localhost:5000/message/';
+
   public socket: any; // port bude získáván z dotazu na cestu "/"
   private httpOptions;
 
@@ -25,13 +27,13 @@ export class MessageService {
       'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
       'Session': token
     })};
-    this.http.get<string>('https:peaceful-forest-45251.herokuapp.com', this.httpOptions)
+    /*this.http.get<string>('https:peaceful-forest-45251.herokuapp.com', this.httpOptions)
     .pipe(
       catchError(this.handleError<string>('getPort'))
     ).subscribe(result => {
       this.socket = io('https://peaceful-forest-45251.herokuapp.com:' + result);
-      console.log(result);
-    });
+    });*/
+    this.socket = io('http://localhost:5000');
    }
 
   getMessages(groupId: string): Observable<Message[]> {
@@ -50,8 +52,8 @@ export class MessageService {
     };
   }
 
-  public sendMessage(message: string) {
-    console.log("Socket emit msg");
+  public sendMessage(message: Message) {
+    console.log(message);
     this.socket.emit('message', message);
   }
 

@@ -5,7 +5,7 @@
 </div>
 <ul class="messages">
     <li *ngFor="let message of chat">
-        <div [ngClass]="loggedUsername == message.fromId ? 'my' : 'other'">
+        <div [ngClass]="loggedUsername == message.username ? 'my' : 'other'">
             <div class="bubble">{{message.text}}</div>
         </div>
     </li>

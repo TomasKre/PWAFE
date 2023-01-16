@@ -1,6 +1,6 @@
 export interface Message { 
-    convId: string;
-    fromId: string;
+    group_id: string;
+    username: string;
     text: string;
     datetime: Date;
 }

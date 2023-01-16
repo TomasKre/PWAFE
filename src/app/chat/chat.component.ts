@@ -5,6 +5,8 @@ import { MessageService } from '../message.service';
 import { FormControl } from '@angular/forms';
 import { AddUser } from 'model/addUser';
 import { GroupService } from '../group.service';
+import { MessageClass } from 'model/messageClass';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-chat',
@@ -14,14 +16,18 @@ import { GroupService } from '../group.service';
 export class ChatComponent {
 
   @Input() selectedGroupId? = '';
-  loggedUsername: string;
+  loggedUsername?: string;
   newUser = new FormControl('');
   newMessage = new FormControl('');
   chat: Message[] = [];
 
   constructor(private messageService: MessageService, private groupService: GroupService,
     private cookies: CookiesService) {
-    this.loggedUsername = this.cookies.getCookie('username');
+      var token = this.cookies.getCookie('session');
+      if (token != null && token != '') {
+        var tokenInfo = Object (jwt_decode(token));
+        this.loggedUsername = tokenInfo.username;
+      }
   }
 
   ngOnInit(){
@@ -43,9 +49,11 @@ export class ChatComponent {
   }
 
   sendMessage() {
-    console.log(this.newMessage);
     if (this.newMessage.value != null) {
-      this.messageService.sendMessage(this.newMessage.value);
+      if (this.loggedUsername != null && this.selectedGroupId != null && this.selectedGroupId != '') {
+        var message = new MessageClass(this.selectedGroupId, this.loggedUsername, this.newMessage.value, new Date());
+        this.messageService.sendMessage(message);
+      }
       this.newMessage.setValue('');
     }
   }
